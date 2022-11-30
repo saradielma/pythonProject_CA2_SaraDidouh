@@ -1,3 +1,5 @@
+<!-- print questions in order (publish date), if it does not work, show bottom text -->
+
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
@@ -7,3 +9,16 @@
     {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+
+<style>
+a {
+    color: black;
+    font-family: sans-serif;
+    font-size: larger;
+}
+
+ul {
+    margin-top: 50px;
+}
+</style>

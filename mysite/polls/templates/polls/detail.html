@@ -1,3 +1,4 @@
+<!-- shows form with possible answers to selected question -->
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 <fieldset>
@@ -8,5 +9,23 @@
         <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
     {% endfor %}
 </fieldset>
-<input type="submit" value="Vote">
+<input id=button type="submit" value="Vote">
 </form>
+
+<style>
+label {
+    color: black;
+    font-family: sans-serif;
+    font-size: larger;
+}
+
+#button {
+    margin-top: 20px;
+    margin-left: 10px;
+    padding: 10px 25px 10px;
+    background-color: blueviolet;
+    border-radius: 10px;
+    border-color: transparent;
+    cursor: pointer;
+}
+</style>
