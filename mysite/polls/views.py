@@ -6,25 +6,30 @@ from django.views import generic
 from .models import Choice, Question
 
 
+# shows all the questions
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
+    # return questions ordered by publish date
     def get_queryset(self):
         """Return the last five published questions."""
         return Question.objects.order_by('-pub_date')[:5]
 
 
+# shows possible choices to chosen question
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
 
+# shows statistics of the choices (how many times each answer has been selected)
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
 
+# registers vote
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
